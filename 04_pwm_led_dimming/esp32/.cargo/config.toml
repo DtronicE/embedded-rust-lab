@@ -1,0 +1,15 @@
+[build]
+target = "xtensa-esp32-none-elf"
+
+[target.xtensa-esp32-none-elf]
+# espflash flashes over USB-UART (no debug probe needed) and opens a serial monitor.
+runner = "espflash flash --monitor"
+rustflags = [
+  "-C", "link-arg=-Tlinkall.x",   # esp-hal supplies its own linker scripts: no memory.x here
+]
+
+[env]
+ESP_LOG = "info"
+
+[unstable]
+build-std = ["core"]              # Xtensa has no pre-built core library

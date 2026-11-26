@@ -1,0 +1,12 @@
+[build]
+target = "thumbv7em-none-eabihf"   # Cortex-M4F: hard-float ABI
+
+[target.thumbv7em-none-eabihf]
+runner = "probe-rs run --chip STM32F411CEUx"
+rustflags = [
+  "-C", "link-arg=-Tlink.x",     # cortex-m-rt's main linker script (includes memory.x)
+  "-C", "link-arg=-Tdefmt.x",    # defmt's linker script (log string table)
+]
+
+[env]
+DEFMT_LOG = "info"

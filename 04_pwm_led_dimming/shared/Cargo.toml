@@ -1,0 +1,11 @@
+[package]
+name = "m04-shared"
+version = "0.1.0"
+edition = "2021"
+description = "Pure, host-testable breathing/gamma maths"
+publish = false
+
+[workspace]
+
+[dependencies]
+

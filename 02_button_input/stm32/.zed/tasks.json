@@ -1,0 +1,7 @@
+[
+  { "label": "build",              "command": "cargo build --release" },
+  { "label": "flash + RTT (run)",  "command": "cargo run --release" },
+  { "label": "cargo embed",        "command": "cargo embed --release" },
+  { "label": "size",               "command": "cargo size --release -- -A" },
+  { "label": "clippy",             "command": "cargo clippy --release" }
+]

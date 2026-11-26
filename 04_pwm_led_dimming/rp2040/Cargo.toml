@@ -1,0 +1,33 @@
+[package]
+name = "m04-pwm-led-dimming-rp2040"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# An empty [workspace] makes this crate its own workspace root, so each chip/module builds
+# independently (different targets cannot share one workspace build cleanly).
+[workspace]
+
+[dependencies]
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+embedded-hal = "1.0"
+rp2040-hal = { version = "0.11", features = ["rt", "critical-section-impl"] }
+rp2040-boot2 = "0.3"
+defmt = "0.3"
+defmt-rtt = "0.4"
+panic-probe = { version = "0.3", features = ["print-defmt"] }
+m04-shared = { path = "../shared" }
+
+# Debug builds of embedded code are often too big / too slow to be usable, so we optimise both.
+[profile.dev]
+opt-level = "s"
+debug = 2          # keep full debug info: it does NOT go to the chip, only to the .elf for probe-rs
+lto = "fat"
+codegen-units = 1
+
+[profile.release]
+opt-level = "s"
+debug = 2
+lto = "fat"
+codegen-units = 1

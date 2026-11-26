@@ -1,0 +1,5 @@
+[
+  { "label": "build",           "command": "cargo build --release" },
+  { "label": "flash + monitor", "command": "cargo run --release" },
+  { "label": "clippy",          "command": "cargo clippy --release" }
+]

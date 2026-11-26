@@ -1,0 +1,30 @@
+[package]
+name = "m01-blink-led-esp32"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# An empty [workspace] makes this crate its own workspace root, so each chip/module builds
+# independently (different targets cannot share one workspace build cleanly).
+[workspace]
+
+[dependencies]
+embedded-hal = "1.0"
+esp-hal = { version = "1.0.0", features = ["esp32", "unstable"] }
+esp-backtrace = { version = "0.17", features = ["esp32", "panic-handler", "println"] }
+esp-println = { version = "0.15", features = ["esp32", "log-04"] }
+esp-bootloader-esp-idf = { version = "0.4", features = ["esp32"] }
+log = "0.4"
+
+# Debug builds of embedded code are often too big / too slow to be usable, so we optimise both.
+[profile.dev]
+opt-level = "s"
+debug = 2          # keep full debug info: it does NOT go to the chip, only to the .elf for probe-rs
+lto = "fat"
+codegen-units = 1
+
+[profile.release]
+opt-level = "s"
+debug = 2
+lto = "fat"
+codegen-units = 1

@@ -1,0 +1,2 @@
+[toolchain]
+channel = "esp"                   # installed by `espup install` (see docs/00_toolchain_setup.md)

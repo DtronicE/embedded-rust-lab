@@ -1,0 +1,15 @@
+[package]
+name = "m02-shared"
+version = "0.1.0"
+edition = "2021"
+description = "Pure, host-testable button debounce logic"
+publish = false
+
+[workspace]
+
+[features]
+defmt = ["dep:defmt"]
+
+[dependencies]
+defmt = { version = "0.3", optional = true }
+

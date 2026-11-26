@@ -1,0 +1,12 @@
+{
+  // Open THIS folder (the chip crate) in Zed, not the repo root, so rust-analyzer sees one target.
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "cargo": { "allTargets": false },
+        "check": { "allTargets": false, "command": "clippy" },
+        "diagnostics": { "disabled": ["inactive-code"] }
+      }
+    }
+  }
+}
